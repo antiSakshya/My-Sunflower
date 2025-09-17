@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday ❤️</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; font-family: "Comic Sans MS", cursive; }
+    body { overflow-x: hidden; }
+    section {
+      min-height: 100vh; width: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      scroll-snap-align: start; position: relative; overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+    html { scroll-snap-type: y mandatory; }
+
+    /* ---------- Section 1: Intro ---------- */
+    #intro { background: linear-gradient(#ffd6e7,#ffd1f0); color: #4a1836; }
+    .balloon {
+      position: absolute; bottom: -220px;
+      width: 60px; height: 80px; border-radius: 50% 50% 45% 45%;
+      animation: floatUp 10s linear infinite;
+    }
+    .balloon::after {
+      content: ""; position: absolute; top: 100%; left: 50%;
+      width: 2px; height: 45px; background: rgba(0,0,0,0.35);
+      transform: translateX(-50%);
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* ---------- Section 2: Winter with Cake ---------- */
+    #winter { background: linear-gradient(#c9d6ff, #e2ebf0); color: #003366; }
+
+    .cake {
+      position: relative; width: 260px; height: 150px;
+      background: #ffb6c1; border-radius: 10px; box-shadow: inset 0 -12px #d46a6a;
+      margin-top: 80px;
+    }
+    .frosting {
+      position: absolute; top: -35px; left: 0; right: 0;
+      height: 35px; background: #fff0f5; border-radius: 12px 12px 0 0;
+      box-shadow: inset 0 -6px #f8a5c2;
+    }
+    .candles {
+      position: absolute; top: -75px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 25px;
+    }
+    .candle {
+      width: 14px; height: 45px; border-radius: 3px;
+      background: repeating-linear-gradient(to bottom, #fff8dc, #fff8dc 5px, #ff6666 5px, #ff6666 10px);
+      position: relative;
+    }
+    .flame {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: radial-gradient(circle, gold 60%, orange 80%, transparent 100%);
+      position: absolute; top: -20px; left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.6s infinite alternate;
+    }
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to   { transform: translateX(-50%) scale(1.2); opacity: 0.7; }
+    }
+    .btn {
+      margin-top: 20px; padding: 10px 20px; font-size: 1.1em;
+      border: none; border-radius: 8px;
+      background: #003366; color: white; cursor: pointer; transition: 0.3s;
+    }
+    .btn:hover { background: #335599; }
+
+    /* Snowflakes */
+    .snowflake {
+      position: absolute; top: -10px;
+      color: white; font-size: 1em;
+      animation: fall linear infinite;
+      user-select: none; pointer-events: none;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* ---------- Confetti ---------- */
+    .confetti {
+      position: fixed; top: 0;
+      width: 8px; height: 14px;
+      opacity: 0.9; z-index: 9999;
+    }
+
+    /* ---------- Section 3: Autumn Memories ---------- */
+    #autumn {
+      background: linear-gradient(#ffcf91, #ffb347);
+      color: #5a2d0c;
+      overflow: hidden;
+      position: relative;
+      padding-top: 60px;
+    }
+    .memory-gallery {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .frame {
+      display: inline-block;
+      background: #fff;
+      border: 6px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      padding: 10px;
+      position: relative;
+      animation: swing 3s infinite ease-in-out;
+      transform-origin: top center;
+      text-align: center;
+    }
+    .frame img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      margin: 0 auto;
+    }
+    .frame p { margin-top: 8px; font-size: 0.9em; color: #5a2d0c; }
+    @keyframes swing {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-3deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .leaf { position: absolute; top: -10px; font-size: 1.4em; animation: fallLeaf linear infinite; user-select: none; pointer-events: none; }
+    @keyframes fallLeaf { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+
+    /* ---------- Section 4: Monsoon ---------- */
+    #monsoon { background: linear-gradient(#1a2a6c, #16222a); color: #cce7ff; overflow: hidden; position: relative; }
+    #monsoon h2 { font-size: 2em; margin-bottom: 20px; z-index: 2; }
+    .raindrop { position: absolute; top: -20px; width: 2px; height: 15px; background: rgba(200, 220, 255, 0.7); animation: rain linear infinite; }
+    @keyframes rain { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(100vh); opacity: 0.2; } }
+    .flash { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); animation: flash 0.2s ease-in-out; }
+    @keyframes flash { from { opacity: 1; } to { opacity: 0; } }
+    .music-btn { margin-top: 20px; padding: 12px 24px; font-size: 1.2em; border: none; border-radius: 8px; background: #0055aa; color: #fff; cursor: pointer; z-index: 2; }
+    .music-btn:hover { background: #2277cc; }
+
+    /* ---------- Section 5: Love Letter ---------- */
+    #love { background: linear-gradient(135deg, #ffe0f0, #ffd1f5, #ffe6ff); color: #4a1836; position: relative; overflow: hidden; }
+    .floating-heart, .floating-butterfly {
+      position: absolute;
+      font-size: 1.2em;
+      opacity: 0.7;
+      animation: floatUpLetters linear infinite;
+    }
+    @keyframes floatUpLetters {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    }
+    .envelope {
+      font-size: 4em;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .envelope:hover { transform: scale(1.2); }
+    .letter {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%; max-width: 800px;
+      background: #fff0f5; padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column; align-items: center;
+    }
+    .letter h3 { margin-bottom: 15px; }
+    .letter textarea {
+      width: 100%; height: 400px; border-radius: 8px; border: 1px solid #ccc; padding: 10px;
+      font-family: inherit; font-size: 1em; resize: none;
+    }
+    @media(max-width:600px){
+      .cake { width: 180px; height: 110px; }
+      .candles { gap: 15px; }
+      .frame img { max-width: 140px; }
+      #love .envelope { font-size: 3em; }
+      .letter textarea { height: 150px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Section 1: Intro -->
+<section id="intro">
+  <h1>🎉 Happy Birthday, My Baby 😋 🎉</h1>
+  <p>I just want to be by your side, holding your hand, and spending every season of life with you.</p>
+</section>
+
+<!-- Section 2: Winter with Cake -->
+<section id="winter">
+  <h2>❄️ Winter Wonderland ❄️</h2>
+  <h3 style="margin-bottom: 20px;">Make A Wish And Blow The Candles, My Sweetheart 💖🎉</h3>
+  <p style="margin-bottom: 40px;">You light up my life, just like these candles ✨</p>
+  <div class="cake">
+    <div class="frosting"></div>
+    <div class="candles">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+    </div>
+  </div>
+  <button id="blowBtn" class="btn">Blow the Candles 🎂</button>
+</section>
+
+<!-- Section 3: Autumn Memories -->
+<section id="autumn">
+  <h2>🍁 Our Little Moments 🍁</h2>
+  <div class="memory-gallery">
+    <div class="frame">
+      <img src="image1.jpeg" alt="Memory 1">
+      <p>You are my Favorite</p>
+    </div>
+    <div class="frame">
+      <img src="image2.jpeg" alt="Memory 2">
+      <p>How perfect we look together</p>
+    </div>
+    <div class="frame">
+      <img src="image3.jpeg" alt="Memory 3">
+      <p>Dreaming Together</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Monsoon -->
+<section id="monsoon">
+  <h2>🌧️ Dancing in the Rain With You 💙</h2>
+  <button id="musicBtn" class="music-btn">▶️ Play Song</button>
+  <audio id="song" src="yellow.mp3"></audio>
+</section>
+
+<!-- Section 5: Love Letter -->
+<section id="love">
+  <h2>💌 And finally… a letter from my heart 💌</h2>
+  <div class="envelope">✉️</div>
+  <div class="letter">
+    <h3>Your Letter</h3>
+    <textarea placeholder="My World💗,
+
+I don’t always find the perfect words to say what I feel, but I want you to know something very simple — you mean everything to me 🌻.
+
+Every time I talk to you, it feels like the world around me gets softer and calmer 😌. I love the warmth in your voice; I find peace in you. You have this magic of making me smile without even trying 😘. You’ve become the best part of my days, and honestly, I can’t live without you 💗. The things I want to do, the places I want to see, the things I’m interested in now — I want all of them, but not without you. I want to take you to all the beautiful, mesmerizing places and tell you that you are more beautiful than all of them.
+
+I love the way you understand me, even in silence. I love the way you make me feel safe 💕. You are my safe world in this world — with you I am very happy and loved. Being with you doesn’t just make me happy, it makes me better.
+
+No matter what happens, I want you to know one thing clearly — you are the manifestation of God’s plan, and I’m not going anywhere 💖. I want to love you and treat you more than anyone else. You are my life 💝.
+
+Forever yours,
+Sakshya"></textarea>
+  </div>
+</section>
+
+<script>
+  /* Balloons */
+  function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.style.left = Math.random()*90 + "vw";
+    balloon.style.background = ["#ff6b6b","#6bafff","#ffd166","#7ee787","#c77bff","#ff9f43","#ffb6c1"][Math.floor(Math.random()*7)];
+    balloon.style.animationDuration = (6+Math.random()*5)+"s";
+    document.querySelector("#intro").appendChild(balloon);
+    setTimeout(()=>balloon.remove(), 12000);
+  }
+  setInterval(createBalloon, 500);
+
+  /* Snowflakes */
+  function createSnowflake() {
+    const snow = document.createElement("div");
+    snow.className = "snowflake"; snow.textContent = "❄";
+    snow.style.left = Math.random()*100 + "vw";
+    snow.style.fontSize = (Math.random()*10+10)+"px";
+    snow.style.animationDuration = (4+Math.random()*6)+"s";
+    document.querySelector("#winter").appendChild(snow);
+    setTimeout(()=>snow.remove(), 10000);
+  }
+  setInterval(createSnowflake, 300);
+
+  /* Autumn falling leaves */
+  function createLeaf() {
+    const leaf = document.createElement("div");
+    leaf.className = "leaf"; leaf.textContent = "🍂";
+    leaf.style.left = Math.random()*100 + "vw";
+    leaf.style.animationDuration = (4+Math.random()*6)+"s";
+    document.querySelector("#autumn").appendChild(leaf);
+    setTimeout(()=>leaf.remove(), 10000);
+  }
+  setInterval(createLeaf, 500);
+
+  /* Confetti */
+  function launchConfetti() {
+    for (let i=0; i<80; i++) {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = Math.random()*100 + "vw";
+      confetti.style.backgroundColor = ["#ff6b6b","#6bafff","#ffd166","#7ee787","#c77bff","#ff9f43","#ffb6c1"][Math.floor(Math.random()*7)];
+      confetti.style.animation = `fall ${3+Math.random()*3}s linear forwards`;
+      confetti.style.transform = `rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(confetti);
+      setTimeout(()=>confetti.remove(), 6000);
+    }
+  }
+  const style = document.createElement("style");
+  style.innerHTML = `@keyframes fall {0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(100vh) rotate(720deg); }}`;
+  document.head.appendChild(style);
+
+  /* Blow button */
+  document.getElementById("blowBtn").addEventListener("click", () => {
+    document.querySelectorAll(".flame").forEach(f => f.style.display = "none");
+    launchConfetti();
+  });
+
+  /* Rain */
+  function createRaindrop() {
+    const drop = document.createElement("div");
+    drop.className = "raindrop";
+    drop.style.left = Math.random()*100 + "vw";
+    drop.style.animationDuration = (0.5+Math.random()*0.7)+"s";
+    document.querySelector("#monsoon").appendChild(drop);
+    setTimeout(()=>drop.remove(), 2000);
+  }
+  setInterval(createRaindrop, 100);
+
+  /* Thunder */
+  function thunder() {
+    const flash = document.createElement("div");
+    flash.className = "flash";
+    document.querySelector("#monsoon").appendChild(flash);
+    setTimeout(()=>flash.remove(), 200);
+  }
+  setInterval(()=>{ if(Math.random() < 0.2) thunder(); }, 4000);
+
+  /* Music player */
+  const musicBtn = document.getElementById("musicBtn");
+  const song = document.getElementById("song");
+  let playing = false;
+  musicBtn.addEventListener("click", () => {
+    if (!playing) { song.play(); musicBtn.textContent = "⏸️ Pause Song"; }
+    else { song.pause(); musicBtn.textContent = "▶️ Play Song"; }
+    playing = !playing;
+  });
+
+  /* Love Letter Floating Hearts & Butterflies */
+  function createFloating() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart"; heart.textContent = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (5+Math.random()*5)+"s";
+    document.querySelector("#love").appendChild(heart);
+    setTimeout(()=>heart.remove(), 10000);
+
+    const butterfly = document.createElement("div");
+    butterfly.className = "floating-butterfly"; butterfly.textContent = "🦋";
+    butterfly.style.left = Math.random()*100 + "vw";
+    butterfly.style.animationDuration = (5+Math.random()*5)+"s";
+    document.querySelector("#love").appendChild(butterfly);
+    setTimeout(()=>butterfly.remove(), 10000);
+  }
+  setInterval(createFloating, 800);
+
+  /* Envelope toggle */
+  const envelope = document.querySelector(".envelope");
+  const letter = document.querySelector(".letter");
+  envelope.addEventListener("click", () => {
+    letter.style.display = (letter.style.display === "flex") ? "none" : "flex";
+  });
+</script>
+</body>
+</html>
+}
